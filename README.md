@@ -51,9 +51,6 @@ multiqr-hackathon/
     └── submission_decoding_2.json    # Stage 2 output (bonus)
 ```
 
-## 4. Dataset Details
-
-Increased the count of training images from 200 to 582 just by augmenting them and did annotations for each image usigng Roboflow and LabelImg library in python for annotations in python for training sample for the model to learn.
 
 ### QR Code Labeling Guide
 
@@ -120,6 +117,9 @@ Both methods create **YOLO format labels**:
 - **200 original images**  
 - → **582 augmented images ready for training**
 
+## 4. Dataset Details
+
+Increased the count of training images from 200 to 582 just by augmenting them and did annotations for each image usigng Roboflow and LabelImg library in python for annotations in python for training sample for the model to learn.
 
 ### Training Data
 - **Location**: `data/train/train/`
