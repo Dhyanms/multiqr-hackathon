@@ -83,7 +83,6 @@ labelImg
 | **Ctrl+S**| Save           |
 
 ⏱️ **Time Estimate**: ~2 hours for 200 images  
----
 
 ## 🌐 Method 2: Roboflow (Web)
 
@@ -107,17 +106,16 @@ labelImg
 
 ⏱️ **Time Estimate**: ~2 hours for 200 images + augmentation  
 
----
-
 ## 📄 Output Format
 Both methods create **YOLO format labels**:
+```
 0 0.342 0.487 0.123 0.156
 0 0.678 0.234 0.098 0.134
+```
 
 **Format**: 
 (Normalized values between `0` and `1`)  
 
----
 ## Result
 - **200 original images**  
 - → **582 augmented images ready for training** 
