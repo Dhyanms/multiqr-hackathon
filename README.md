@@ -135,8 +135,9 @@ python -c "from pyzbar import pyzbar; print('✅ All dependencies installed succ
 
 ```bash
 python train.py --dataset data/train \
-                --epochs 100 \
+                --epochs 40 \
                 --batch 16 \
+                --img 640
                 --model yolov8s.pt
 ```
 
@@ -145,7 +146,7 @@ python train.py --dataset data/train \
 | Parameter | Value | Description |
 |-----------|-------|-------------|
 | `--dataset` | `data/train` | Path to dataset directory |
-| `--epochs` | `100` | Number of training iterations (100 recommended) |
+| `--epochs` | `140` | Number of training iterations (40 recommended) |
 | `--batch` | `16` | Batch size (16 for T4 GPU, 8 for smaller GPUs) |
 | `--model` | `yolov8s.pt` | Model variant (s/m/l/x) |
 
