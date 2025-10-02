@@ -1,0 +1,12 @@
+names:
+- QR
+nc: 1
+roboflow:
+  license: CC BY 4.0
+  project: annotation-k7xrm
+  url: https://universe.roboflow.com/1pharma/annotation-k7xrm/dataset/3
+  version: 3
+  workspace: 1pharma
+test: C:\Users\dhyan\Projects_All\multiqr-hackathon\qr-hackathon\data\test\images
+train: C:\Users\dhyan\Projects_All\multiqr-hackathon\qr-hackathon\data\train\train\images
+val: C:\Users\dhyan\Projects_All\multiqr-hackathon\qr-hackathon\data\train\train\images
