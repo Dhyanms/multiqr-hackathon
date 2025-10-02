@@ -425,6 +425,3 @@ This manual labeling process, while time-consuming, ensured high-quality ground 
 - [pyzbar Library](https://github.com/NaturalHistoryMuseum/pyzbar)
 - [Roboflow Dataset](https://universe.roboflow.com/1pharma/annotation-k7xrm/dataset/3)
 
----
-
-**Made for Multi-QR Code Recognition Hackathon 2025** 🏆
