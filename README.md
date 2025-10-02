@@ -134,7 +134,7 @@ python -c "from pyzbar import pyzbar; print('✅ All dependencies installed succ
 ### Basic Training
 
 ```bash
-python train.py --dataset data/annotation.v3-train-clr.yolov8 \
+python train.py --dataset data/train \
                 --epochs 100 \
                 --batch 16 \
                 --model yolov8s.pt
@@ -144,7 +144,7 @@ python train.py --dataset data/annotation.v3-train-clr.yolov8 \
 
 | Parameter | Value | Description |
 |-----------|-------|-------------|
-| `--dataset` | `data/annotation.v3-train-clr.yolov8` | Path to dataset directory |
+| `--dataset` | `data/train` | Path to dataset directory |
 | `--epochs` | `100` | Number of training iterations (100 recommended) |
 | `--batch` | `16` | Batch size (16 for T4 GPU, 8 for smaller GPUs) |
 | `--model` | `yolov8s.pt` | Model variant (s/m/l/x) |
