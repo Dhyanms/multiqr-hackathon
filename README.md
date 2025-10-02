@@ -35,15 +35,14 @@ multiqr-hackathon/
 │       └── data_utils.py             # Visualization utilities
 │
 ├── data/
-│   ├── annotation.v3-train-clr.yolov8/
-│   │   ├── data.yaml
+│   ├── train/
 │   │   └── train/
 │   │       ├── images/               # 582 training images
 │   │       └── labels/               # 582 YOLO format labels
 │   └── test/
-│       ├── images/                   # 50 test images
-│       └── labels/                   # 50 test labels (optional)
-│
+│   │    ├── images/                   # 50 test images
+│   │    └── labels/                 # 50 test labels (optional)
+│   └── data.yaml  
 └── outputs/
     ├── qr_detection/
     │   └── weights/
@@ -55,9 +54,9 @@ multiqr-hackathon/
 ## 4. Dataset Details
 
 ### Training Data
-- **Location**: `data/annotation.v3-train-clr.yolov8/train/`
+- **Location**: `data/train/train/`
 - **Total Images**: 582 (200 original images × 3 augmented versions each)
-- **Labels**: `data/annotation.v3-train-clr.yolov8/train/labels/` (582 .txt files)
+- **Labels**: `data/train/train/labels/` (582 .txt files)
 - **Source**: Roboflow Universe - 1pharma/annotation-k7xrm
 - **QR Codes per Image**: 2-4 (average)
 - **Total Annotations**: ~1,200+ QR code bounding boxes
@@ -91,6 +90,10 @@ Example:
 - `class_id`: Always 0 (single class: QR code)
 - `x_center, y_center`: Center coordinates (normalized 0-1)
 - `width, height`: Box dimensions (normalized 0-1)
+
+Sample Image:
+<img width="1442" height="1137" alt="image" src="https://github.com/user-attachments/assets/68042812-effd-4c87-a911-b752ff6d527b" />
+
 
 ## 5. Installation
 
@@ -149,7 +152,7 @@ python train.py --dataset data/annotation.v3-train-clr.yolov8 \
 ### Quick Training (for testing)
 
 ```bash
-python train.py --dataset data/annotation.v3-train-clr.yolov8 \
+python train.py --dataset data/train\
                 --epochs 20 \
                 --batch 16
 ```
@@ -252,7 +255,23 @@ python infer.py --input data/test/images --output outputs/results.json --conf 0.
 
 ## 8. Results
 
-*(Space reserved for your results)*
+Validation Metrics:
+   mAP50: 0.9921
+   mAP50-95: 0.8748
+   Precision: 0.9696
+   Recall: 0.9682
+
+Test Set:
+
+Stage 1 (Detection):
+   Total images: 50
+   Total QR codes detected: 186
+   Average QR per image: 3.72
+Stage 2 (Decoding - Bonus):
+   Successfully decoded: 155/186
+   Decode success rate: 83.3%
+QR Code Types Detected:
+   general: 155
 
 ## 9. Limitations
 
