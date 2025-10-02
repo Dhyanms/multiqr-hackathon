@@ -64,57 +64,63 @@ Increased the count of training images from 200 to 582 just by augmenting them a
 pip install labelImg
 labelImg
 ```
-Quick Steps
+### Quick Steps
+1. **Open Dir** → Select images folder  
+2. **Change Save Dir** → Select labels folder  
+3. Select **YOLO** format (not PascalVOC)  
+4. Press **W** → Draw box around QR code  
+5. Type **QR** → Press Enter  
+6. Press **D** → Next image  
+7. Repeat for all **200 images**  
 
-Open Dir → Select images folder
-Change Save Dir → Select labels folder
-Select "YOLO" format (not PascalVOC)
-Press W → Draw box around QR code
-Type QR → Press Enter
-Press D for next image
-Repeat for all 200 images
+### Shortcuts
+| Key       | Action         |
+|-----------|----------------|
+| **W**     | Create box     |
+| **D**     | Next image     |
+| **A**     | Previous image |
+| **Del**   | Delete box     |
+| **Ctrl+S**| Save           |
 
-Shortcuts
+⏱️ **Time Estimate**: ~2 hours for 200 images  
+---
 
-W - Create box
-D - Next image
-A - Previous image
-Del - Delete box
-Ctrl+S - Save
+## 🌐 Method 2: Roboflow (Web)
 
-Time: ~2 hours for 200 images
+### Quick Steps
+1. Sign up at [roboflow.com](https://roboflow.com)  
+2. **Create Project** → Select **Object Detection**  
+3. **Upload** 200 images  
+4. **Annotate** → Draw boxes around QR codes  
+5. **Generate** → Add preprocessing:  
+   - Auto-Orient  
+   - Resize 640×640  
 
-Method 2: Roboflow (Web)
-Quick Steps
+6. **Add Augmentation**:  
+   - Flip: Horizontal (50%)  
+   - Rotate: -15° to +15°  
+   - Brightness: ±8%  
+   - Blur: 0–0.2px  
+   - Create **3 versions per image**  
 
-Sign up at roboflow.com
-Create Project → Object Detection
-Upload 200 images
-Annotate → Draw boxes around QR codes
-Generate → Add preprocessing:
+7. **Export** → **YOLO v8** → Download ZIP  
 
-Auto-Orient
-Resize 640×640
+⏱️ **Time Estimate**: ~2 hours for 200 images + augmentation  
 
-Add Augmentation:
+---
 
-Flip: Horizontal (50%)
-Rotate: -15° to +15°
-Brightness: ±8%
-Blur: 0-0.2px
-Create 3 versions per image
-
-Export → YOLO v8 → Download ZIP
-
-Time: ~2 hours for 200 images + augmentation
-
-Output Format
-Both methods create YOLO format labels:
+## 📄 Output Format
+Both methods create **YOLO format labels**:
 0 0.342 0.487 0.123 0.156
 0 0.678 0.234 0.098 0.134
-Format: class_id x_center y_center width height (normalized 0-1)
 
-Result: 200 original images → 582 augmented images ready for training
+**Format**: 
+(Normalized values between `0` and `1`)  
+
+---
+## Result
+- **200 original images**  
+- → **582 augmented images ready for training** 
 
 ### Training Data
 - **Location**: `data/train/train/`
