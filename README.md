@@ -79,7 +79,7 @@ labelImg
 | **Del**   | Delete box     |
 | **Ctrl+S**| Save           |
 
-**Time Estimate**: ~2 hours for 200 images  
+**Time Estimate**: ~3 hours for 250 images  
 
 ### Method 2: Roboflow (Web)
 
@@ -114,8 +114,8 @@ Both methods create **YOLO format labels**:
 (Normalized values between `0` and `1`)  
 
 ### Result
-- **200 original images**  
-- → **582 augmented images ready for training**
+- **200 original images - training & 50 original images - testing**  
+- → **582 augmented images ready for training and 50 images for testing**
 
 ## 4. Dataset Details
 
@@ -254,7 +254,7 @@ python infer.py --input data/test/images \
 
 **Output**: `outputs/submission_detection_1.json`
 
-**Format:**
+** Sample Format:**
 ```json
 [
   {
@@ -281,7 +281,7 @@ python infer.py --input data/test/images \
 
 **Output**: `outputs/submission_decoding_2.json`
 
-**Format:**
+**Sample Format:**
 ```json
 [
   {
