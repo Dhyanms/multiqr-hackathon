@@ -255,23 +255,32 @@ python infer.py --input data/test/images --output outputs/results.json --conf 0.
 
 ## 8. Results
 
-Validation Metrics:
-   mAP50: 0.9921
-   mAP50-95: 0.8748
-   Precision: 0.9696
-   Recall: 0.9682
+### Validation Metrics
+| Metric      | Score   |
+|-------------|---------|
+| mAP@50      | 0.9921  |
+| mAP@50-95   | 0.8748  |
+| Precision   | 0.9696  |
+| Recall      | 0.9682  |
 
-Test Set:
+---
 
-Stage 1 (Detection):
-   Total images: 50
-   Total QR codes detected: 186
-   Average QR per image: 3.72
-Stage 2 (Decoding - Bonus):
-   Successfully decoded: 155/186
-   Decode success rate: 83.3%
-QR Code Types Detected:
-   general: 155
+### Test Set Results
+| Stage | Metric                        | Value      |
+|-------|-------------------------------|------------|
+| Stage 1 (Detection) | Total images               | 50         |
+|                     | Total QR codes detected    | 186        |
+|                     | Average QR per image       | 3.72       |
+| Stage 2 (Decoding - Bonus) | Successfully decoded         | 155 / 186  |
+|                     | Decode success rate        | 83.3%      |
+
+---
+
+### QR Code Types Detected
+| Type    | Count |
+|---------|-------|
+| General | 155   |
+
 
 ## 9. Limitations
 
