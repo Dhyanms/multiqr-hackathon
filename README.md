@@ -52,7 +52,7 @@ multiqr-hackathon/
 ```
 
 
-### QR Code Labeling Guide
+## QR Code Labeling Guide
 
 ### Method 1: LabelImg (Desktop)
 
