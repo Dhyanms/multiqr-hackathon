@@ -51,7 +51,75 @@ multiqr-hackathon/
     └── submission_decoding_2.json    # Stage 2 output (bonus)
 ```
 
+
+## QR Code Labeling Guide
+
+### Method 1: LabelImg (Desktop)
+
+#### Installation
+```bash
+pip install labelImg
+labelImg
+```
+#### Quick Steps
+1. **Open Dir** → Select images folder  
+2. **Change Save Dir** → Select labels folder  
+3. Select **YOLO** format (not PascalVOC)  
+4. Press **W** → Draw box around QR code  
+5. Type **QR** → Press Enter  
+6. Press **D** → Next image  
+7. Repeat for all **200 images**  
+
+#### Shortcuts
+| Key       | Action         |
+|-----------|----------------|
+| **W**     | Create box     |
+| **D**     | Next image     |
+| **A**     | Previous image |
+| **Del**   | Delete box     |
+| **Ctrl+S**| Save           |
+
+**Time Estimate**: ~3 hours for 250 images  
+
+### Method 2: Roboflow (Web)
+
+#### Quick Steps
+1. Sign up at [roboflow.com](https://roboflow.com)  
+2. **Create Project** → Select **Object Detection**  
+3. **Upload** 200 images  
+4. **Annotate** → Draw boxes around QR codes  
+5. **Generate** → Add preprocessing:  
+   - Auto-Orient  
+   - Resize 640×640  
+
+6. **Add Augmentation**:  
+   - Flip: Horizontal (50%)  
+   - Rotate: -15° to +15°  
+   - Brightness: ±8%  
+   - Blur: 0–0.2px  
+   - Create **3 versions per image**  
+
+7. **Export** → **YOLO v8** → Download ZIP  
+
+**Time Estimate**: ~2 hours for 200 images + augmentation  
+
+### Output Format
+Both methods create **YOLO format labels**:
+```
+0 0.342 0.487 0.123 0.156
+0 0.678 0.234 0.098 0.134
+```
+
+**Format**: 
+(Normalized values between `0` and `1`)  
+
+### Result
+- **200 original images - training & 50 original images - testing**  
+- → **582 augmented images ready for training and 50 images for testing**
+
 ## 4. Dataset Details
+
+Increased the count of training images from 200 to 582 just by augmenting them and did annotations for each image usigng Roboflow and LabelImg library in python for annotations in python for training sample for the model to learn.
 
 ### Training Data
 - **Location**: `data/train/train/`
@@ -135,8 +203,9 @@ python -c "from pyzbar import pyzbar; print('✅ All dependencies installed succ
 
 ```bash
 python train.py --dataset data/train \
-                --epochs 100 \
+                --epochs 40 \
                 --batch 16 \
+                --img 640
                 --model yolov8s.pt
 ```
 
@@ -145,7 +214,7 @@ python train.py --dataset data/train \
 | Parameter | Value | Description |
 |-----------|-------|-------------|
 | `--dataset` | `data/train` | Path to dataset directory |
-| `--epochs` | `100` | Number of training iterations (100 recommended) |
+| `--epochs` | `140` | Number of training iterations (40 recommended) |
 | `--batch` | `16` | Batch size (16 for T4 GPU, 8 for smaller GPUs) |
 | `--model` | `yolov8s.pt` | Model variant (s/m/l/x) |
 
@@ -185,7 +254,7 @@ python infer.py --input data/test/images \
 
 **Output**: `outputs/submission_detection_1.json`
 
-**Format:**
+** Sample Format:**
 ```json
 [
   {
@@ -212,7 +281,7 @@ python infer.py --input data/test/images \
 
 **Output**: `outputs/submission_decoding_2.json`
 
-**Format:**
+**Sample Format:**
 ```json
 [
   {
