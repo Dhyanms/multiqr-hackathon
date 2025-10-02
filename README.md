@@ -53,6 +53,69 @@ multiqr-hackathon/
 
 ## 4. Dataset Details
 
+Increased the count of training images from 200 to 582 just by augmenting them and did annotations for each image usigng Roboflow and LabelImg library in python for annotations in python for training sample for the model to learn.
+
+# QR Code Labeling Guide
+
+## Method 1: LabelImg (Desktop)
+
+### Installation
+```bash
+pip install labelImg
+labelImg
+```
+Quick Steps
+
+Open Dir → Select images folder
+Change Save Dir → Select labels folder
+Select "YOLO" format (not PascalVOC)
+Press W → Draw box around QR code
+Type QR → Press Enter
+Press D for next image
+Repeat for all 200 images
+
+Shortcuts
+
+W - Create box
+D - Next image
+A - Previous image
+Del - Delete box
+Ctrl+S - Save
+
+Time: ~2 hours for 200 images
+
+Method 2: Roboflow (Web)
+Quick Steps
+
+Sign up at roboflow.com
+Create Project → Object Detection
+Upload 200 images
+Annotate → Draw boxes around QR codes
+Generate → Add preprocessing:
+
+Auto-Orient
+Resize 640×640
+
+Add Augmentation:
+
+Flip: Horizontal (50%)
+Rotate: -15° to +15°
+Brightness: ±8%
+Blur: 0-0.2px
+Create 3 versions per image
+
+Export → YOLO v8 → Download ZIP
+
+Time: ~2 hours for 200 images + augmentation
+
+Output Format
+Both methods create YOLO format labels:
+0 0.342 0.487 0.123 0.156
+0 0.678 0.234 0.098 0.134
+Format: class_id x_center y_center width height (normalized 0-1)
+
+Result: 200 original images → 582 augmented images ready for training
+
 ### Training Data
 - **Location**: `data/train/train/`
 - **Total Images**: 582 (200 original images × 3 augmented versions each)
